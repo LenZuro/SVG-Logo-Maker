@@ -42,7 +42,7 @@ let userShape;
         .prompt([
                 {
                     type: "input",
-                    message: "What would you liek your logo to say (Enter 1-3 characters)",
+                    message: "What would you like your logo to say (Enter 1-3 characters)",
                     name: "text",
                 },
                 {

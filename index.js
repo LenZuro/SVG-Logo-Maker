@@ -32,4 +32,45 @@ let userShape;
     svgItem += '</svg>';
 
 
-    
+    fs.writeFile(fileName , svgItem , (err) => {
+        err ? console.log(err) : console.log("Succsessfully Created your logo.svg");
+    });
+
+
+    function promptInfo() {
+        inquirer
+        .prompt([
+                {
+                    type: "input",
+                    message: "What would you liek your logo to say (Enter 1-3 characters)",
+                    name: "text",
+                },
+                {
+                    type: "input",
+                    message: "Please choose a text color (Enter color keyword OR a Hexadecimal number",
+                    name: "textColor",
+                },
+                {
+                    type: "list",
+                    message: "What shape would you like your Logo?",
+                    choices: ["Triangle", "Square", "Circle"],
+                    name: "shape",
+                },
+                {
+                    type: "input",
+                    message: "Please choose the shapes color (Enter color keyword OR a Hexadecimal number)",
+                    name: "shapeBackgroundColor",
+                },
+        ])
+        .then((answers) => {
+            if (answers.text.length > 3){
+                console.log("The text can not be more than 3 Characters");
+                promptInfo();
+            } else{
+                writeToFile('logo.svg' , answers);
+            }
+
+        });
+    }
+
+    promptInfo();

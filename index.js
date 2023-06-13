@@ -10,7 +10,7 @@ function writeToFile(fileName, answers){
     '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">';
     svgItem += '<g>';
     svgItem += `${answers.shape}`;
-}
+
 
 let userShape;
     if (answers.shape === "Triangle") {
@@ -35,7 +35,7 @@ let userShape;
     fs.writeFile(fileName , svgItem , (err) => {
         err ? console.log(err) : console.log("Succsessfully Created your logo.svg");
     });
-
+}
 
     function promptInfo() {
         inquirer
@@ -67,6 +67,7 @@ let userShape;
                 console.log("The text can not be more than 3 Characters");
                 promptInfo();
             } else{
+                console.log(answers)
                 writeToFile('logo.svg' , answers);
             }
 
